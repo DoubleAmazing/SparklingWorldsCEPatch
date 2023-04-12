@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingCategoryDef>
+      <defName>AmmoPlasmaGunSW</defName>
+      <label>Plasma charge</label>
+      <parent>AmmoAdvanced</parent>
+      <iconPath>UI/Icons/ThingCategories/CaliberPlasmaLarge</iconPath>
+    </ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_PlasmaGunSW</defName>
+    <label>Plasma charge</label>
+    <ammoTypes>
+      <Ammo_PlasmaGunSW>Bullet_PlasmaGunSW</Ammo_PlasmaGunSW>
+    </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="PlasmaGunSWBase" ParentName="AmmoBase" Abstract="True">
+    <description>Plasma cartridge to be used as ammunition to melt armor.</description>
+    <statBases>
+	  <Mass>0.01</Mass>
+	  <Bulk>0.02</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting</li>
+    </tradeTags>
+    <thingCategories>
+      <li>AmmoPlasmaGunSW</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="PlasmaGunSWBase">
+    <defName>Ammo_PlasmaGunSW</defName>
+    <label>Plasma cartridge</label>
+    <graphicData>
+      <texPath>Things/Ammo/PlasmaCell/Heavy</texPath>
+      <graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>1.25</MarketValue>
+    </statBases>
+    <ammoClass>Plasma</ammoClass>
+	<comps>
+		  <li Class="CombatExtended.CompProperties_ExplosiveCE">
+			<damageAmountBase>80</damageAmountBase>
+			<explosiveDamageType>Bomb</explosiveDamageType>
+			<explosiveRadius>0.5</explosiveRadius>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+		  </li>
+		<li Class="CombatExtended.CompProperties_Fragments">
+			<fragments>
+				<Fragment_Large>2</Fragment_Large>
+				<Fragment_Small>10</Fragment_Small>
+			</fragments>
+		</li>
+	</comps>
+  </ThingDef>
+	
+	<!-- ================== Projectiles ================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="BasePlasmaGunSW" ParentName="BaseBullet" Abstract="true">
+    <graphicData>
+      <texPath>Things/Items/PlasmaShotSW</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>PlasmaSW</damageDef>
+      <speed>160</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="BasePlasmaGunSW">
+    <defName>Bullet_PlasmaGunSW</defName>
+    <label>Plasma shot</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <explosionRadius>1.0</explosionRadius>
+      <damageDef>Thermobaric</damageDef>
+      <damageAmountBase>52</damageAmountBase>
+      <armorPenetrationSharp>24</armorPenetrationSharp>
+      <armorPenetrationBlunt>30</armorPenetrationBlunt>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
+    </projectile>
+  </ThingDef>
+	
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_PlasmaGunSW</defName>
+    <label>make Plasmagun cartridge x20</label>
+    <description>Craft 20 Plasmagun cartridges.</description>
+    <jobString>Making Plasmagun cartridges.</jobString>
+	<workAmount>4500</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>8</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Plasteel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_PlasmaGunSW>20</Ammo_PlasmaGunSW>
+    </products>
+	<researchPrerequisite>PlasmaGunnerySW</researchPrerequisite>
+  </RecipeDef>
+	
+</Defs>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <RecipeDef>
+    <defName>MakeFSXFromNeutroSW</defName>
+    <label>make FSX from neutroglycerin</label>
+    <description>Make a batch of FSX by refining neutroglycerin milked from boomalopes and boomrats.\n\nProduces 5 FSX.</description>
+    <jobString>Refining FSX from neutroglycerin.</jobString>
+    <effectWorking>Cremate</effectWorking>
+    <soundWorking>Recipe_Cremate</soundWorking>
+    <workAmount>1200</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>NeutroglycerinSW</li>
+          </thingDefs>
+        </filter>
+        <count>30</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>NeutroglycerinSW</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <FSX>5</FSX>
+    </products>
+    <workSkill>Intellectual</workSkill>
+	<recipeUsers>
+		<li>BiofuelRefinery</li>
+	</recipeUsers>
+  </RecipeDef>
+
+
+
+</Defs>

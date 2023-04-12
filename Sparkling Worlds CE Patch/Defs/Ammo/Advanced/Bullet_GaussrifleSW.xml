@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingCategoryDef>
+      <defName>AmmoGaussrifleSW</defName>
+      <label>8x20mm Gauss</label>
+      <parent>AmmoAdvanced</parent>
+      <iconPath>UI/Icons/ThingCategories/CaliberCharge</iconPath>
+    </ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_GaussrifleSW</defName>
+    <label>8x20mm Gauss</label>
+    <ammoTypes>
+      <Ammo_GaussrifleSW>Bullet_GaussrifleSW</Ammo_GaussrifleSW>
+    </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="GaussrifleSWBase" ParentName="AmmoBase" Abstract="True">
+    <description>Gauss ammo designed to be electrically fired to pierce armor.</description>
+    <statBases>
+	  <Mass>0.018</Mass>
+	  <Bulk>0.01</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting</li>
+    </tradeTags>
+    <thingCategories>
+      <li>AmmoGaussrifleSW</li>
+    </thingCategories>
+	<stackLimit>5000</stackLimit>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="GaussrifleSWBase">
+    <defName>Ammo_GaussrifleSW</defName>
+    <label>8x20mm Gauss cartridge</label>
+    <graphicData>
+      <texPath>Things/Ammo/Charged/MediumRegular</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.7</MarketValue>
+    </statBases>
+    <ammoClass>Charged</ammoClass>
+  </ThingDef>
+	
+	<!-- ================== Projectiles ================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="BaseGaussrifleSW" ParentName="BaseBullet" Abstract="true">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+      <speed>210</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="BaseGaussrifleSW">
+    <defName>Bullet_GaussrifleSW</defName>
+    <label>8x20mm Gauss bullet</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageAmountBase>10</damageAmountBase>
+      <armorPenetrationSharp>28</armorPenetrationSharp>
+      <armorPenetrationBlunt>34</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+	
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_GaussrifleSW</defName>
+    <label>make 8x20mm Gauss cartridge x500</label>
+    <description>Craft 500 8x20mm Gauss cartridges.</description>
+    <jobString>Making 8x20mm Gauss cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Plasteel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_GaussrifleSW>500</Ammo_GaussrifleSW>
+    </products>
+	<researchPrerequisite>RailgunSW</researchPrerequisite>
+  </RecipeDef>
+	
+</Defs>

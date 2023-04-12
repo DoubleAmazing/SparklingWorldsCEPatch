@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+    <defName>Gun_PlasmaGunSW</defName>
+    <statBases>
+      <Mass>8</Mass>
+      <RangedWeapon_Cooldown>0.80</RangedWeapon_Cooldown>
+      <SightsEfficiency>1</SightsEfficiency>
+      <ShotSpread>0.1</ShotSpread>
+      <SwayFactor>1.70</SwayFactor>
+      <Bulk>10</Bulk>
+    </statBases>
+    <Properties>
+      <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+      <hasStandardCommand>true</hasStandardCommand>
+      <defaultProjectile>Bullet_PlasmaGunSW</defaultProjectile>
+      <warmupTime>0.95</warmupTime>
+      <range>40</range>
+      <soundCast>Shot_IncendiaryLauncher</soundCast>
+      <soundCastTail>GunTail_Heavy</soundCastTail>
+      <muzzleFlashScale>12</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </Properties>
+    <AmmoUser>
+      <magazineSize>3</magazineSize>
+      <reloadTime>4.35</reloadTime>
+      <ammoSet>AmmoSet_PlasmaGunSW</ammoSet>
+    </AmmoUser>
+    <FireModes>
+      <aiUseBurstMode>FALSE</aiUseBurstMode>
+    </FireModes>
+    <weaponTags>
+		<li>PlasmaGunSW</li>
+		<li>AdvancedGun</li>
+    </weaponTags>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+	<xpath>*/ThingDef[defName="Gun_PlasmaGunSW"]/tools</xpath>
+	<value>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>1.9</cooldownTime>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+					<li>BurnSW</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>1.9</cooldownTime>
+			</li>
+		</tools>
+	</value>	
+  </Operation>
+  
+</Patch>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>Sparkling Worlds CE Patch [1.4]</name>
+	<author>Vintage Fruitcake</author>
+	<packageId>VintageFruitcake.SparklingWorldsCE</packageId>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+	<description>Combat extended patch for Sparkling Worlds by Albion.\nPatched by Vintage Fruitcake, updated to 1.4 by RedSalesperson.\nLoad Order:Combat Extended -> Sparkling Worlds -> Patch</description>
+</ModMetaData>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingCategoryDef>
+      <defName>AmmoRailgunSW</defName>
+      <label>8x30mm Railgun</label>
+      <parent>AmmoAdvanced</parent>
+      <iconPath>UI/Icons/ThingCategories/CaliberRailgunHighCaliber</iconPath>
+    </ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_RailgunSW</defName>
+    <label>8x30mm Railgun</label>
+    <ammoTypes>
+      <Ammo_RailgunSW>Bullet_RailgunSW</Ammo_RailgunSW>
+    </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="RailgunSWBase" ParentName="AmmoBase" Abstract="True">
+		<description>Gauss lance ammo</description>
+		<label>8x30mm Railgun</label>
+		<statBases>
+		  <Mass>0.054</Mass>
+		  <Bulk>0.04</Bulk>
+		</statBases>
+		<tradeTags>
+		  <li>CE_AutoEnableTrade</li>
+		  <li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+		  <li>AmmoRailgunSW</li>
+		</thingCategories>
+		<stackLimit>200</stackLimit>
+	</ThingDef>
+
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="RailgunSWBase">
+    <defName>Ammo_RailgunSW</defName>
+    <label>8x30mm Railgun cartridge</label>
+	<graphicData>
+		<texPath>Things/Ammo/Railgun/HighCaliber</texPath>
+		<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+	</graphicData>
+    <statBases>
+      <MarketValue>0.57</MarketValue>
+    </statBases>
+    <ammoClass>Charged</ammoClass>
+  </ThingDef>
+	
+	<!-- ================== Projectiles ================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="BaseRailgunSW" ParentName="BaseBullet" Abstract="true">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+      <speed>360</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="BaseRailgunSW">
+    <defName>Bullet_RailgunSW</defName>
+    <label>8x30mm Railgun shot</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageAmountBase>8</damageAmountBase>
+      <armorPenetrationSharp>55</armorPenetrationSharp>
+      <armorPenetrationBlunt>70</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+	
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_RailgunSW</defName>
+    <label>make 8x30mm Railgun cartridge x20</label>
+    <description>Craft 20 8x30mm Railgun cartridges.</description>
+    <jobString>Making 8x30mm Railgun cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Plasteel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_RailgunSW>20</Ammo_RailgunSW>
+    </products>
+	<researchPrerequisite>RailgunSW</researchPrerequisite>
+  </RecipeDef>
+		
+</Defs>
